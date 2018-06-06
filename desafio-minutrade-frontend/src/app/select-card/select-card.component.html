@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3 card-select" align="center">
+      <input type="text" name="cod" [(ngModel)]="cod" placeholder="Insira o código" maxlength="8">
+      <button class="btn btn-light" (click)="setCard()">Use</button>
+      <hr>
+      <p>or</p>
+      <input type="text" name="name" [(ngModel)]="name" placeholder="Nome do titular">
+      <button class="btn btn-light" (click)="requestCard(name)">Request Card</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3" align="center">
+      <img src="assets/brand.png" alt="">
+    </div>
+  </div>
+</div>
