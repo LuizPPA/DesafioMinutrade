@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 
 var cardSchema = new Schema({
   cod: String,
+  titular: String,
   balance: Number,
   lastCredited: Date
 })
