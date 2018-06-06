@@ -21,39 +21,38 @@ router.post('/buy', function(req, res) {
   Snack.findOne({cod: req.body.snack}, function(err, result) {
     if(err) res.status(406).send(err)
     snack = result
-  })
+    Card.findOne({cod: req.body.card}, function(err, result) {
+      if(err) {
+        res.status(406).send(err)
+        return
+      }
+      card = result
 
-  Card.findOne({cod: req.body.card}, function(err, result) {
-    if(err) {
-      res.status(406).send(err)
-      return
-    }
-    card = result
+      if(card === undefined || card === null) {
+        res.status(406).send('Unable to find card')
+        return
+      }
+      if(snack === undefined || snack === null){
+        res.status(406).send('Unable to find snack')
+        return
+      }
 
-    if(card === undefined || card === null) {
-      res.status(406).send('Unable to find card')
-      return
-    }
-    if(snack === undefined || snack === null){
-      res.status(406).send('Unable to find snack')
-      return
-    }
+      let today = new Date(Date.now())
+      let yesterday = new Date(today.setDate(today.getUTCDate()-1))
+      let credited = new Date(card.lastCredited)
 
-    let today = new Date(Date.now())
-    let yesterday = new Date(today.setDate(today.getUTCDate()-1))
-    let credited = new Date(card.lastCredited)
-
-    if (credited < yesterday) {
-      card.credit()
-    }
-    if(card.balance < snack.price){
-      res.status(406).send('Insufficient funds')
-      return
-    }
-    card.balance -= snack.price
-    card.save(function (err, result) {
-      if(err) res.status(406).send(err)
-      res.status(200).send(result)
+      if (credited < yesterday) {
+        card.credit()
+      }
+      if(card.balance < snack.price){
+        res.status(406).send('Insufficient funds')
+        return
+      }
+      card.balance -= snack.price
+      card.save(function (err, result) {
+        if(err) res.status(406).send(err)
+        res.status(200).send(result)
+      })
     })
   })
 })
