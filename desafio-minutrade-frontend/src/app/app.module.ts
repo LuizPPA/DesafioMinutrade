@@ -1,18 +1,37 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser'
+import { HttpModule } from '@angular/http'
+import { FormsModule } from '@angular/forms'
+import { NgModule } from '@angular/core'
+import { AppRoutingModule } from './app-routing.module'
 
-import { AppComponent } from './app.component';
-import { CardComponent } from './card/card.component';
+import { AppComponent } from './app.component'
+import { CardComponent } from './card/card.component'
+
+import { CardService } from './shared/card.service'
+import { SnackService } from './shared/snack.service'
+import { SelectCardComponent } from './select-card/select-card.component'
+import { HomeComponent } from './home/home.component'
+import { NavComponent } from './home/nav/nav.component'
+import { SnackComponent } from './snack/snack.component'
+import { SnackListComponent } from './snack-list/snack-list.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    CardComponent
+    CardComponent,
+    SelectCardComponent,
+    HomeComponent,
+    NavComponent,
+    SnackComponent,
+    SnackListComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [CardService, SnackService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
