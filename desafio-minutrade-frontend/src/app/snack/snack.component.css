@@ -1,0 +1,15 @@
+p{
+  margin: 0;
+}
+.snack{
+  background-color: rgb(235, 235, 235);
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+.details{
+  margin: 15px;
+  padding: 5px;
+}
+.btn{
+  margin: 15px;
+}
