@@ -1,0 +1,15 @@
+<app-nav></app-nav>
+<div class="container corner">
+  <div class="row">
+    <div class="content">
+      <div class="col-sm-6">
+        <app-snack-list></app-snack-list>
+      </div>
+      <div class="col-sm-6">
+        <div class="payment">
+          <app-card [card]="card" *ngIf="card"></app-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

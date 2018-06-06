@@ -1,0 +1,14 @@
+.nav{
+  display: block;
+  /* width: 100vw; */
+  height: 60px;
+  background-color: white;
+  box-shadow: 0px 1px 8px 1px rgb(210, 210, 210);
+}
+.option{
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  margin: 15px 8px 5px 8px;
+  display: inline-block;
+  font-size: 22px;
+}
