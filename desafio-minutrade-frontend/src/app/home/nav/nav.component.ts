@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { Router } from '@angular/router'
+import { CookieService } from 'ngx-cookie-service'
 
 @Component({
   selector: 'app-nav',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+  constructor(private cookieService: CookieService, private router: Router){}
 
   ngOnInit() {
+  }
+
+  back(){
+    this.cookieService.delete('card')
+    this.router.navigate(['/'])
   }
 
 }

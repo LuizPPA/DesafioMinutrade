@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router'
+import { CookieService } from 'ngx-cookie-service'
 import { CardService } from '../shared/card.service'
 import Card from '../card/card.model'
 
@@ -14,13 +15,17 @@ export class SelectCardComponent implements OnInit, OnDestroy {
   card: Card
   subscription
 
-  constructor(private cardService: CardService, private router: Router){}
+  constructor(private cardService: CardService, private cookieService: CookieService, private router: Router){}
 
   ngOnInit() {
     this.subscription = this.cardService.cardChanged.subscribe((card: Card) => {
       this.card = card
       this.router.navigate(['/home'])
     })
+    if(this.cookieService.check('card')){
+      this.cod = this.cookieService.get('card')
+      this.setCard()
+    }
   }
 
   requestCard(name: string){
