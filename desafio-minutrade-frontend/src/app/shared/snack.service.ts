@@ -12,11 +12,11 @@ export class SnackService{
 
   constructor(private http: Http, private cardService: CardService){}
 
-  createSnack(name: string, price: number){
-    this.http.post('http://localhost:3000/snacks/create', {name, price}).subscribe((response: Response) => {
+  createSnack(name: string, price: number, image: string){
+    this.http.post('http://localhost:3000/snacks/create', {name, price, image}).subscribe((response: Response) => {
       if(response.ok){
         let data = response.json()
-        this.snacks.push(new Snack(data.cod, data.name, data.price))
+        this.snacks.push(new Snack(data.cod, data.name, data.price, data.image))
         this.snacksChanged.next(this.snacks)
       }
     })
@@ -28,7 +28,7 @@ export class SnackService{
         let data = response.json()
         this.snacks = []
         data.map((snack) => {
-          this.snacks.push(new Snack(snack.cod, snack.name, snack.price))
+          this.snacks.push(new Snack(snack.cod, snack.name, snack.price, snack.image))
         })
         this.snacksChanged.next(this.snacks)
       }
