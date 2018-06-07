@@ -7,7 +7,6 @@ router.post('/create', function(req, res) {
   let card = new Card()
   card.generateCod()
   card.credit()
-  console.log(req.body)
   if (/^[a-zA-Z\s]+$/.test(req.body.titular)) {
     card.titular = req.body.titular.toUpperCase()
   }
@@ -35,8 +34,8 @@ router.get('/find/:cod', function(req, res){
       res.status(406).send('Unable to find card')
       return
     }
-    let today = new Date(Date.now())
-    let yesterday = new Date(today.setDate(today.getUTCDate()-1))
+    let yesterday = new Date(Date.now())
+    yesterday.setUTCHours(0, 0, 0, 0)
     let credited = new Date(result.lastCredited)
 
     if (credited < yesterday) {
