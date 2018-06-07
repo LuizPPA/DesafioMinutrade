@@ -1,0 +1,26 @@
+<div class="row form">
+  <div class="col-sm-12">
+    <h4>Novo Lanche</h4>
+  </div>
+  <form [formGroup]="snackForm" (ngSubmit)="onSubmit()">
+    <div class="col-sm-6">
+      <div class="field">
+        <label for="name">Nome</label>
+        <input formControlName="name" class="input" id="name" type="text" name="name" value="" placeholder="Nome do lanche">
+      </div>
+      <div class="field">
+        <label for="price">Preço</label>
+        <input formControlName="price" class="input" id="price" type="number" name="price" value="" placeholder="Preço">
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="field">
+        <label for="image">Imagem (em PNG)</label>
+        <input formControlName="image" class="input" id="image" type="text" name="image" value="" placeholder="URL da imagem">
+      </div>
+      <div class="field">
+        <button type="submit" class="btn btn-light right">INSERIR</button>
+      </div>
+    </div>
+  </form>
+</div>
