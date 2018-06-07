@@ -5,12 +5,18 @@ var router = express.Router()
 
 router.post('/create', function(req, res) {
   let snack = new Snack()
+  let image = req.body.image || ''
+  if (!snack.validateImage(image)) {
+    res.status(406).send('Please select a valid png image')
+    return
+  }
   snack.generateCod()
   snack.name = req.body.name || 'Default snack'
   snack.price = req.body.price || 1.80
+  snack.image = image
   snack.save(function (err, result) {
     if(err) res.status(406).send(err)
-    res.status(200).send(result)
+    else res.status(200).send(result)
   });
 })
 
@@ -19,7 +25,10 @@ router.post('/buy', function(req, res) {
   let card
 
   Snack.findOne({cod: req.body.snack}, function(err, result) {
-    if(err) res.status(406).send(err)
+    if(err) {
+      res.status(406).send(err)
+      return
+    }
     snack = result
     Card.findOne({cod: req.body.card}, function(err, result) {
       if(err) {
