@@ -12,3 +12,8 @@
   display: inline-block;
   font-size: 22px;
 }
+.brand{
+  float: right;
+  margin: 13px 15px 17px 0;
+  height: 30px;
+}

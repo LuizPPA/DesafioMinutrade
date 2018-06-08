@@ -15,7 +15,8 @@ import { HomeComponent } from './home/home.component'
 import { NavComponent } from './home/nav/nav.component'
 import { SnackComponent } from './snack/snack.component'
 import { SnackListComponent } from './snack-list/snack-list.component'
-import { CreateSnackComponent } from './snack-list/create-snack/create-snack.component'
+import { CreateSnackComponent } from './snack-list/create-snack/create-snack.component';
+import { SnackDetailComponent } from './home/snack-detail/snack-detail.component'
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CreateSnackComponent } from './snack-list/create-snack/create-snack.com
     NavComponent,
     SnackComponent,
     SnackListComponent,
-    CreateSnackComponent
+    CreateSnackComponent,
+    SnackDetailComponent
   ],
   imports: [
     BrowserModule,

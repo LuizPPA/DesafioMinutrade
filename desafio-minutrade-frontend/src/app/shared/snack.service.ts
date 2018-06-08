@@ -9,6 +9,8 @@ import Snack from '../snack/snack.model'
 export class SnackService{
   snacksChanged: Subject<Snack[]> = new Subject<Snack[]>()
   snacks: Snack[] = []
+  selectedSnackChanged: Subject<Snack> = new Subject<Snack>()
+  selectedSnack: Snack
 
   constructor(private http: Http, private cardService: CardService){}
 
@@ -37,6 +39,11 @@ export class SnackService{
 
   getSnacks(){
     return this.snacks
+  }
+
+  selectSnack(snack: Snack){
+    this.selectedSnack = snack
+    this.selectedSnackChanged.next(this.selectedSnack)
   }
 
   buy(snack: string){

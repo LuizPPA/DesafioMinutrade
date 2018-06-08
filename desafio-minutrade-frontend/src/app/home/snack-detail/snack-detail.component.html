@@ -1,0 +1,11 @@
+<div class="col-md-12 display" align="center">
+  <div *ngIf="snack">
+    <p>{{ snack.name }}</p>
+    <p>R$ {{ snack.price }}</p>
+    <img [src]="snack.image" [alt]="snack.name+' photo'">
+    <button class="btn btn-light" (click)="buy()">COMPRAR</button>
+  </div>
+  <div *ngIf="!snack">
+    <p class="warn">Selecione um item para exibir detalhes</p>
+  </div>
+</div>

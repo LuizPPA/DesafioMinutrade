@@ -19,4 +19,8 @@ export class SnackComponent implements OnInit {
     this.snackService.buy(this.snack.cod)
   }
 
+  select(){
+    this.snackService.selectSnack(this.snack)
+  }
+
 }

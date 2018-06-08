@@ -2,13 +2,17 @@
 <div class="container corner">
   <div class="row">
     <div class="content">
-      <div class="col-sm-6">
-        <div class="payment" align="center">
+      <div class="col-sm-12" align="center">
+        <div class="payment">
           <app-card [card]="card" *ngIf="card"></app-card>
         </div>
+        <hr>
       </div>
       <div class="col-sm-6">
         <app-snack-list></app-snack-list>
+      </div>
+      <div class="col-sm-6">
+        <app-snack-detail></app-snack-detail>
       </div>
     </div>
   </div>

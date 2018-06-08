@@ -1,7 +1,11 @@
 p{
   margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .snack{
+  cursor: pointer;
   background-color: rgb(235, 235, 235);
   text-align: center;
   font-family: 'Open Sans', sans-serif;
