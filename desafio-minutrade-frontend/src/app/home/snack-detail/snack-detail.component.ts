@@ -20,7 +20,7 @@ export class SnackDetailComponent implements OnInit, OnDestroy {
   }
 
   buy(){
-    this.snackService.buy(this.snack.cod)
+    this.snackService.buy(this.snack._id)
   }
 
   ngOnDestroy(){

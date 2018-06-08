@@ -16,7 +16,7 @@ export class SnackComponent implements OnInit {
   }
 
   buy(){
-    this.snackService.buy(this.snack.cod)
+    this.snackService.buy(this.snack._id)
   }
 
   select(){

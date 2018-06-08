@@ -3,19 +3,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var snackSchema = new Schema({
-  cod: String,
-  price: Number,
-  name: String,
-  image: String
+  price: {type: Number, default: 180, min: 1, max: 500, required: true},
+  name: {type: String, required: true},
+  image: {type: String, default: "http://whatsyourdeal.com/grocery-coupons/wp-content/uploads/2016/07/Snack-Clip-Art.png", required: true}
 })
-
-snackSchema.methods.generateCod = function(){
-  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  var cod = ''
-  for(var i = 0; i < 5; i++)
-    cod += possible.charAt(Math.floor(Math.random() * possible.length));
-  this.cod = cod
-}
 
 snackSchema.methods.validateImage = function(image) {
   if(image.length == 0) return false

@@ -3,10 +3,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var cardSchema = new Schema({
-  cod: String,
-  titular: String,
-  balance: Number,
-  lastCredited: Date
+  cod: {type: String, required: true, unique: true},
+  titular: {type: String, required: true, index: true},
+  balance: {type: Number, default: 500, min: 0, max: 500, required: true},
+  lastCredited: {type: Date, default: Date.now(), required: true}
 })
 
 cardSchema.methods.credit = function(){
@@ -14,16 +14,13 @@ cardSchema.methods.credit = function(){
   this.lastCredited = new Date
 }
 
-cardSchema.methods.generateCod = function(){
-  var possible = "ABC0123456789";
-  var cod = ''
-
-  for (var i = 0; i < 8; i++)
-    cod += possible.charAt(Math.floor(Math.random() * possible.length));
-
-  this.cod = cod
+cardSchema.statics.generateCod = function(){
+  let possible = "ABCDEFGHIJ0123456789"
+  let cod = ''
+  for (var i = 0; i < 8; i++) cod += possible.charAt(Math.floor(Math.random() * possible.length))
+  return cod
 }
 
 //Export model
-let Card = mongoose.model('card', cardSchema)
+var Card = mongoose.model('card', cardSchema)
 module.exports = Card

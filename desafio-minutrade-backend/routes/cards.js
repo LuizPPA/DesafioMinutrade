@@ -5,7 +5,7 @@ var router = express.Router()
 
 router.post('/create', function(req, res) {
   let card = new Card()
-  card.generateCod()
+  card.cod = Card.generateCod()
   card.credit()
   if (/^[a-zA-Z\s]+$/.test(req.body.titular)) {
     card.titular = req.body.titular.toUpperCase()
