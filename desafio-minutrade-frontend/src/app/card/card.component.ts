@@ -19,6 +19,20 @@ export class CardComponent implements OnInit, OnDestroy{
     })
   }
 
+  copyCod(){
+    let range = document.createRange()
+    let selection = window.getSelection();
+    let cod = document.getElementById("cod")
+
+    selection.removeAllRanges();
+    range.selectNodeContents(cod);
+    selection.addRange(range);
+    document.execCommand('copy');
+    selection.removeAllRanges();
+
+    alert("Code copied")
+  }
+
   ngOnDestroy(){
     this.subscription.unsubscribe()
   }

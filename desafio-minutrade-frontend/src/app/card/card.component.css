@@ -20,9 +20,17 @@
   outline: none;
   border: 0;
 }
+.glyphicon-copy{
+  cursor: pointer;
+  font-size: 18px;
+}
 .titular{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   margin-left: 20px;
   font-size: 22px;
+  max-width: 195px;
   display: inline-block;
   color: rgb(65, 65, 65);
 }

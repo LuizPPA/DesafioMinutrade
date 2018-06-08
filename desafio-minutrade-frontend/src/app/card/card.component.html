@@ -1,5 +1,5 @@
 <div class="card">
-  <p class="cod">{{ card.cod }}</p>
+  <p id="cod" class="cod">{{ card.cod }} <span (click)="copyCod()" class="glyphicon glyphicon-copy"></span></p>
   <p class="titular">{{ card.titular }}</p>
   <img src="assets/logo.png" class="flag" alt="minutrade logo">
 </div>

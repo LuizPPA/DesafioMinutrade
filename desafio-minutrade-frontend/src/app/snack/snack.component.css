@@ -5,12 +5,12 @@ p{
   white-space: nowrap;
 }
 .snack{
-  cursor: pointer;
   background-color: rgb(235, 235, 235);
   text-align: center;
   font-family: 'Open Sans', sans-serif;
 }
 .details{
+  cursor: pointer;
   margin: 15px;
   padding: 5px;
 }
