@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/snacks', snacksRouter)
 app.use('/cards', cardsRouter)
 
-mongoose.connect('mongodb://127.0.0.1:27017/minutrade')
+mongoose.connect('mongodb://client:client123@ds153380.mlab.com:53380/minutrade')
 mongoose.Promise = global.Promise;
 var db = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error:'))
