@@ -15,6 +15,10 @@ img{
   font-size: 22px;
   display: block;
   margin-top: 20px;
+  outline-color: rgb(137, 210, 195);
+}
+.btn:active{
+  outline-color: rgb(137, 210, 195);
 }
 .warn{
   color: rgb(150, 150, 150);

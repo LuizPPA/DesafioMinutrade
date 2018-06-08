@@ -11,6 +11,10 @@ p{
 .btn{
   width: 40%;
   margin: 20px 8px 0px 8px;
+  outline-color: rgb(137, 210, 195);
+}
+.btn:active{
+  outline-color: rgb(137, 210, 195);
 }
 .card-select{
   margin-top: 6%;
