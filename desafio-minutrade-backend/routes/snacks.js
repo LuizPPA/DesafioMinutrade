@@ -11,7 +11,7 @@ router.post('/create', function(req, res) {
     res.status(406).send('Please select a valid png image')
     return
   }
-  if(price > 5 || price < 0.01){
+  if(price > 500 || price < 1){
     res.status(406).send('Every snack must cost between R$5.00 and R$0.01')
     return
   }
