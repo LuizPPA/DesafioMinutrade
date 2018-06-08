@@ -18,7 +18,7 @@ export class SnackService{
     this.http.post('http://localhost:3000/snacks/create', {name, price, image}).subscribe((response: Response) => {
       if(response.ok){
         let data = response.json()
-        this.snacks.push(new Snack(data.cod, data.name, data.price, data.image))
+        this.snacks.push(new Snack(data.cod, data.name, data.price/100, data.image))
         this.snacksChanged.next(this.snacks)
       }
     })
@@ -30,7 +30,7 @@ export class SnackService{
         let data = response.json()
         this.snacks = []
         data.map((snack) => {
-          this.snacks.push(new Snack(snack.cod, snack.name, snack.price, snack.image))
+          this.snacks.push(new Snack(snack.cod, snack.name, snack.price/100, snack.image))
         })
         this.snacksChanged.next(this.snacks)
       }

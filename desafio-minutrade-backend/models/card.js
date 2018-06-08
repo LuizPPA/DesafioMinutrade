@@ -10,7 +10,7 @@ var cardSchema = new Schema({
 })
 
 cardSchema.methods.credit = function(){
-  this.balance = 5.0
+  this.balance = 500
   this.lastCredited = new Date
 }
 

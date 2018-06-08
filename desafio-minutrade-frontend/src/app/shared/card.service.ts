@@ -15,7 +15,7 @@ export class CardService{
     this.http.post('http://localhost:3000/cards/create', {titular}).subscribe((response: Response) => {
       if(response.ok){
         let data = response.json()
-        this.card = new Card(data.cod, data.titular, data.balance, data.lastCredited)
+        this.card = new Card(data.cod, data.titular, data.balance/100, data.lastCredited)
         this.cookieService.set('card', this.card.cod)
         this.cardChanged.next(this.card)
       }
@@ -26,7 +26,7 @@ export class CardService{
     this.http.get('http://localhost:3000/cards/find/'+cod).subscribe((response: Response) => {
       if(response.ok){
         let data = response.json()
-        this.card = new Card(data.cod, data.titular, data.balance, data.lastCredited)
+        this.card = new Card(data.cod, data.titular, data.balance/100, data.lastCredited)
         this.cookieService.set('card', this.card.cod)
         this.cardChanged.next(this.card)
       }
