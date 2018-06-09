@@ -59,11 +59,12 @@ router.post('/buy', function(req, res) {
         return
       }
       // Check if the card has already been credited today
-      let yesterday = new Date(Date.now())
-      yesterday.setUTCHours(0, 0, 0, 0)
+      const UTC = new Date().toLocaleString()
+      let today = new Date(UTC+' UTC')
+      today.setUTCHours(0, 0, 0, 0)
       let credited = new Date(result.lastCredited)
       // Credit if it hasn't
-      if (credited < yesterday) {
+      if (credited < today) {
         result.credit()
       }
       // Checks if card has funds

@@ -40,17 +40,23 @@ router.get('/find/:cod', function(req, res){
       res.status(406).send('Unable to find card')
       return
     }
+    let card = result
 
     // Check if the card has already been credited today
-    let yesterday = new Date(Date.now())
-    yesterday.setUTCHours(0, 0, 0, 0)
-    let credited = new Date(result.lastCredited)
+    const UTC = new Date().toLocaleString()
+    let today = new Date(UTC+' UTC')
+    today.setUTCHours(0, 0, 0, 0)
+    let credited = new Date(card.lastCredited)
 
     // Credit if it hasn't
-    if (credited < yesterday) {
-      result.credit()
+    if (credited < today) {
+      card.credit()
+      card.save(function (err, result) {
+        if(err) res.status(406).send(err)
+        else res.status(200).send(result)
+      })
     }
-    res.status(200).send(result)
+    else res.status(200).send(card)
   })
 })
 

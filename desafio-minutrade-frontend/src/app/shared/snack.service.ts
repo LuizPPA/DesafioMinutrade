@@ -55,13 +55,16 @@ export class SnackService{
   }
 
   // Buy snack with current card
-  buy(snack: string){
-    let card = this.cardService.getCard().cod
+  buy(snack){
+    let card = this.cardService.getCard()
+    if(snack.price <= card.balance){
+      this.cardService.pay(snack.price)
+    }
     // Setup request to local backend running on default 3000 port
-    this.http.post('http://localhost:3000/snacks/buy', {card, snack}).subscribe((response: Response) => {
+    this.http.post('http://localhost:3000/snacks/buy', {card: card.cod, snack: snack._id}).subscribe((response: Response) => {
       if(response.ok){
         // If request succeeds update card
-        this.cardService.setCard(card)
+        this.cardService.setCard(card.cod)
       }
     })
   }

@@ -17,7 +17,7 @@ export class SnackComponent implements OnInit {
 
   // Call buy method passing self snack
   buy(){
-    this.snackService.buy(this.snack._id)
+    this.snackService.buy(this.snack)
   }
 
   // Call select method passing self snack

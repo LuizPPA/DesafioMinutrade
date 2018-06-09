@@ -12,7 +12,9 @@ var cardSchema = new Schema({
 // Recharge card to the daily credit
 cardSchema.methods.credit = function(){
   this.balance = 500
-  this.lastCredited = new Date(Date.now())
+  const UTC = new Date().toLocaleString()
+  let now = new Date(UTC+' UTC')
+  this.lastCredited = now
 }
 
 // Genertae an unique code to be assigned to a card

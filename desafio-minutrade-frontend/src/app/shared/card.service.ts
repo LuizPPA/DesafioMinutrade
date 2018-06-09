@@ -39,6 +39,11 @@ export class CardService{
     })
   }
 
+  pay(value: number){
+    this.card.balance -= value
+    this.cardChanged.next(this.card)
+  }
+
   // Returns current card
   getCard(){
     return this.card

@@ -22,7 +22,12 @@ export class SnackDetailComponent implements OnInit, OnDestroy {
 
   // Bind to button event
   buy(){
-    this.snackService.buy(this.snack._id)
+    this.snackService.buy(this.snack)
+  }
+
+  // Clear selection
+  unset(){
+    this.snack = null
   }
 
   // Clear subscription
