@@ -11,7 +11,7 @@ var cardSchema = new Schema({
 
 cardSchema.methods.credit = function(){
   this.balance = 500
-  this.lastCredited = new Date
+  this.lastCredited = new Date(Date.UTC())
 }
 
 cardSchema.statics.generateCod = function(){

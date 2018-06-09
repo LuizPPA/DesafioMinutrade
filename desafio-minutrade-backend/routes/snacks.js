@@ -49,7 +49,7 @@ router.post('/buy', function(req, res) {
         res.status(406).send('Unable to find snack')
         return
       }
-      let yesterday = new Date(Date.now())
+      let yesterday = new Date(Date.UTC())
       yesterday.setUTCHours(0, 0, 0, 0)
       let credited = new Date(result.lastCredited)
 
