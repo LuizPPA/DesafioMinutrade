@@ -14,15 +14,18 @@ export class SnackDetailComponent implements OnInit, OnDestroy {
   constructor(private snackService: SnackService){}
 
   ngOnInit() {
+    // Listen to card changes
     this.subscription = this.snackService.selectedSnackChanged.subscribe((snack: Snack) => {
       this.snack = snack
     })
   }
 
+  // Bind to button event
   buy(){
     this.snackService.buy(this.snack._id)
   }
 
+  // Clear subscription
   ngOnDestroy(){
     this.subscription.unsubscribe()
   }

@@ -14,11 +14,13 @@ export class CardComponent implements OnInit, OnDestroy{
   constructor(private cardService: CardService) {}
 
   ngOnInit() {
+    // Listen to card changes
     this.subscription = this.cardService.cardChanged.subscribe((card: Card) => {
       this.card = card
     })
   }
 
+  // Programmatically copy card code to clipboard
   copyCod(){
     let range = document.createRange()
     let selection = window.getSelection();
@@ -33,6 +35,7 @@ export class CardComponent implements OnInit, OnDestroy{
     alert("Code copied")
   }
 
+  // Clear subscription
   ngOnDestroy(){
     this.subscription.unsubscribe()
   }

@@ -10,6 +10,7 @@ var mongoose = require('mongoose')
 
 var app = express()
 
+// Avoiding CORS issues
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*")
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
@@ -22,26 +23,29 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
+// Snacks router
 app.use('/snacks', snacksRouter)
+// Cards routes
 app.use('/cards', cardsRouter)
 
-mongoose.connect('mongodb://client:client123@ds153380.mlab.com:53380/minutrade')
-mongoose.Promise = global.Promise;
+// Setting up mongodb connection
+// Connection to DB at mLab. The database credentials are exposed here because i consider it an affordable risk for this project
+mongoose.connect('mongodb://client:client123@ds153380.mlab.com:53380/minutrade') // I strongly advice switching to a local database to speed up request time if possible
 var db = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error:'))
 
-// catch 404 and forward to error handler
+// Catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404))
 })
 
-// error handler
+// Error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
+  // Set locals, only providing error in development
   res.locals.message = err.message
   res.locals.error = req.app.get('env') === 'development' ? err : {}
 
-  // render the error page
+  // Renturns the error
   res.status(err.status || 500).send('error')
 })
 

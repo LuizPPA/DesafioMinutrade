@@ -15,10 +15,12 @@ export class SnackComponent implements OnInit {
   ngOnInit() {
   }
 
+  // Call buy method passing self snack
   buy(){
     this.snackService.buy(this.snack._id)
   }
 
+  // Call select method passing self snack
   select(){
     this.snackService.selectSnack(this.snack)
   }

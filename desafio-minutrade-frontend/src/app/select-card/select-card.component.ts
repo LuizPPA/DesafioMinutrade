@@ -18,25 +18,30 @@ export class SelectCardComponent implements OnInit, OnDestroy {
   constructor(private cardService: CardService, private cookieService: CookieService, private router: Router){}
 
   ngOnInit() {
+    // Listen to card changes and navigates to home when a card is set
     this.subscription = this.cardService.cardChanged.subscribe((card: Card) => {
       this.card = card
       this.router.navigate(['/home'])
     })
+    // Or if a cookie is set, navigates home immediately by automatically seting card
     if(this.cookieService.check('card')){
       this.cod = this.cookieService.get('card')
       this.setCard()
     }
   }
 
+  // Request for a new card creation
   requestCard(name: string){
     if(name.length > 0) this.cardService.createCard(name)
     else alert('Por favor, insira o nome do titular')
   }
 
+  // Set current card
   setCard(){
     this.cardService.setCard(this.cod)
   }
 
+  // Clear subscription
   ngOnDestroy(){
     this.subscription.unsubscribe()
   }

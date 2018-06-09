@@ -14,12 +14,14 @@ export class SnackListComponent implements OnInit {
   constructor(private snackService: SnackService) { }
 
   ngOnInit() {
+    // Listen to changes on snack list
     this.subscription = this.snackService.snacksChanged.subscribe((snacks) => {
       this.snacks = snacks
     })
     this.snackService.fetchSnacks()
   }
 
+  // Clear subscriptions
   ngOnDestroy() {
     this.subscription.unsubscribe()
   }

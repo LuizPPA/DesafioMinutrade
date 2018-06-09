@@ -14,6 +14,7 @@ export class NavComponent implements OnInit {
   ngOnInit() {
   }
 
+  // Delete cookie and navigates back
   back(){
     this.cookieService.delete('card')
     this.router.navigate(['/'])

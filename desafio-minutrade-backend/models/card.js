@@ -3,17 +3,19 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var cardSchema = new Schema({
-  cod: {type: String, required: true, unique: true},
-  titular: {type: String, required: true, index: true},
-  balance: {type: Number, default: 500, min: 0, max: 500, required: true},
-  lastCredited: {type: Date, default: Date.now(), required: true}
+  cod: {type: String, required: true, unique: true}, // Card prettier identifier
+  titular: {type: String, required: true, index: true}, // Card's owner name
+  balance: {type: Number, default: 500, min: 0, max: 500, required: true}, // Total balance in cents
+  lastCredited: {type: Date, default: Date.now(), required: true} // Last time it has recieved it's daily recharge
 })
 
+// Recharge card to the daily credit
 cardSchema.methods.credit = function(){
   this.balance = 500
   this.lastCredited = new Date(Date.now())
 }
 
+// Genertae an unique code to be assigned to a card
 cardSchema.statics.generateCod = async function(){
   let possible = "ABCDEFGHIJ0123456789"
   let cod = ''

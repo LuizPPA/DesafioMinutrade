@@ -1,3 +1,5 @@
+// Snack model
+
 export default class Snack {
   _id: string
   name: string

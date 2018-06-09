@@ -1,3 +1,5 @@
+// Card model
+
 export default class Card {
   cod:string
   titular: string

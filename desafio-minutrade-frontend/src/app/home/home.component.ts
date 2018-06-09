@@ -16,17 +16,23 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(private cardService: CardService, private cookieService: CookieService, private router: Router) { }
 
   ngOnInit() {
+    // Setup a card for home
     this.card = this.cardService.getCard()
+    // Listen to card changes
     this.subscription = this.cardService.cardChanged.subscribe((card) => {
       this.card = card
     })
+    // If card is not set
     if(!this.card){
+      // Fetches it from db in case a cookie is set
       if(this.cookieService.check('card')) this.cardService.setCard(this.cookieService.get('card'))
+      // Or navigates back to initial page
       else this.router.navigate(['/'])
     }
 
   }
 
+  // Clear subscriptions
   ngOnDestroy(){
     this.subscription.unsubscribe()
   }
