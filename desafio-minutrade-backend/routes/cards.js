@@ -3,9 +3,9 @@ var Card = require('../models/card')
 var Snack = require('../models/snack')
 var router = express.Router()
 
-router.post('/create', function(req, res) {
+router.post('/create', async function(req, res) {
   let card = new Card()
-  card.cod = Card.generateCod()
+  card.cod = await Card.generateCod()
   card.credit()
   if (/^[a-zA-Z\s]+$/.test(req.body.titular)) {
     card.titular = req.body.titular.toUpperCase()
@@ -34,7 +34,7 @@ router.get('/find/:cod', function(req, res){
       res.status(406).send('Unable to find card')
       return
     }
-    let yesterday = new Date(Date.UTC())
+    let yesterday = new Date(Date.now())
     yesterday.setUTCHours(0, 0, 0, 0)
     let credited = new Date(result.lastCredited)
 

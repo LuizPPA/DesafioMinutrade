@@ -11,13 +11,20 @@ var cardSchema = new Schema({
 
 cardSchema.methods.credit = function(){
   this.balance = 500
-  this.lastCredited = new Date(Date.UTC())
+  this.lastCredited = new Date(Date.now())
 }
 
-cardSchema.statics.generateCod = function(){
+cardSchema.statics.generateCod = async function(){
   let possible = "ABCDEFGHIJ0123456789"
   let cod = ''
-  for (var i = 0; i < 8; i++) cod += possible.charAt(Math.floor(Math.random() * possible.length))
+  let unique = false
+
+  while (!unique) {
+    for (var i = 0; i < 8; i++) cod += possible.charAt(Math.floor(Math.random() * possible.length))
+    let dup = await Card.findOne({cod: cod})
+    if(dup) cod = ''
+    else unique = true
+  }
   return cod
 }
 
