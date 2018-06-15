@@ -3,7 +3,7 @@
 
 ## Backend
 
-The frontend initial setup was generated with [Expess Generator](https://github.com/expressjs/generator) version 4.16.0.
+The backend initial setup was generated with [Expess Generator](https://github.com/expressjs/generator) version 4.16.0.
 The database connection is made at [mLab](https://mlab.com), an external MongoDB cloud service. Since this project is not meant to production but only a development little test, i'm using the free tier mLab plan.
 
 ### Start server
