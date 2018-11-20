@@ -8,7 +8,7 @@ The database connection is made at [mLab](https://mlab.com), an external MongoDB
 
 ### Start server
 
-Run `npm install` and then `npm start` for a dev server. The server will then start listening to `http://localhost:300/`. In case you have changed your default express port, make sure to also update the frontend request address.
+Run `npm install` and then `npm start` for a dev server. The server will then start listening to `http://localhost:3000/`. In case you have changed your default express port, make sure to also update the frontend request address.
 
 ### Further help
 
